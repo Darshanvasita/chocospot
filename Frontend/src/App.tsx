@@ -6,6 +6,7 @@ import Collection from './pages/Collection';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Footer from './components/Footer';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
             <Route path="/collection" element={<Collection />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-
+            <Route path='/login' element={<Login/>} ></Route>
           </Routes>
         </main>
         <Footer />
