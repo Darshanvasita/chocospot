@@ -13,11 +13,13 @@ function App() {
       <div className="min-h-screen bg-chocolate-50 flex flex-col">
         <Navbar />
         <main className="flex-grow">
+          {/* new */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/collection" element={<Collection />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+
           </Routes>
         </main>
         <Footer />
