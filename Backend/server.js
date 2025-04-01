@@ -8,6 +8,8 @@ const userRouter = require('./routes/userRoutes')
 const productRouter = require('./routes/productRoute')
 const cartRouter = require('./routes/cartRoutes')
 const orderRouter = require('./routes/orderRoutes')
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json'); // Swagger definition file
 
 require('dotenv').config()
 const app = express()
@@ -20,6 +22,9 @@ connectCloudinary()
 app.use(express.json())       
 app.use(express.urlencoded({extended : true}))
 app.use(cors())
+
+// Swagger UI setup
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // api endpoint
 
