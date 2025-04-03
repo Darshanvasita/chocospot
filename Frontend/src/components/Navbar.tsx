@@ -38,9 +38,9 @@ const Navbar = () => {
             <button className="text-chocolate-900 hover:text-chocolate-600 transition-colors duration-200">
               <Search size={20} />
             </button>
-            <button className="text-chocolate-900 hover:text-chocolate-600 transition-colors duration-200">
+            <Link to={'/login'} className="text-chocolate-900 hover:text-chocolate-600 transition-colors duration-200">
               <User size={20} />
-            </button>
+            </Link>
             <button className="text-chocolate-900 hover:text-chocolate-600 transition-colors duration-200 relative">
               <ShoppingCart size={20} />
               <span className="absolute -top-2 -right-2 bg-chocolate-600 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
