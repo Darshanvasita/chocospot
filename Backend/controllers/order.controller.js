@@ -7,7 +7,7 @@ const Stripe = require('stripe')
 require('dotenv').config();
 
 
-// gloabal variable
+
 const currency = 'inr'
 const deliveryCharge = 10
 
