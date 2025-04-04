@@ -19,21 +19,21 @@ const productSchema = new mongoose.Schema({
         type : Array,
         required : true
     }, 
-    category : {
+    country : {
         type : String,
         required : true
     },
-    subCategory : {
-        type : String,
-        required : true
-    },
-    sizes : {
-        type : Array,
-        required : true
-    },
-    bestSeller : {
-        type : Boolean
-    },
+    // subCategory : {
+    //     type : String,
+    //     required : true
+    // },
+    // sizes : {
+    //     type : Array,
+    //     required : true
+    // },
+    // bestSeller : {
+    //     type : Boolean
+    // },
     date : {
         type : Number,required : true
     }

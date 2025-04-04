@@ -2,6 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Prata&display=swap');
 @import "tailwindcss";  
 
+/* Shree Ganeshay namah  */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Prata&display=swap');
+@import "tailwindcss";  
+a.active hr{
+    display: block;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 
 
 a.active hr{

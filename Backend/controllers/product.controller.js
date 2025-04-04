@@ -6,7 +6,7 @@ const productModel = require('../models/productModel')
 const addProduct = async (req,res) => {
     try {
         
-        const { name,description,price,category,subCategory,sizes,bestSeller } = req.body
+        const { name,description,price,country, } = req.body
 
         
         
@@ -27,11 +27,9 @@ const addProduct = async (req,res) => {
         const productData = {
             name,
             description,
-            category,
+            
             price : Number(price),
-            subCategory,
-            bestSeller : bestSeller === "true" ? true : false,
-            sizes  : JSON.parse(sizes),
+            country, 
             image : imagesUrl,
             date : Date.now()
         }
