@@ -18,17 +18,17 @@ a.active hr{
 
 @layer base {
   body {
-    @apply bg-white text-chocolate-dark;
+    @apply bg-white ;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-chocolate-dark text-white hover:bg-chocolate-medium transition-colors;
+    @apply  text-white transition-colors;
   }
   
   .btn-secondary {
-    @apply bg-caramel text-white hover:bg-chocolate-light transition-colors;
+    @apply text-white  transition-colors;
   }
 }
 
