@@ -8,7 +8,29 @@ a.active hr{
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-chocolate-dark: #3C1518;
+  --color-chocolate-medium: #693D3D;
+  --color-chocolate-light: #A45D5D;
+  --color-caramel: #C68B59;
+  --color-cream: #F2DAC3;
+}
 
+@layer base {
+  body {
+    @apply bg-white text-chocolate-dark;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-chocolate-dark text-white hover:bg-chocolate-medium transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply bg-caramel text-white hover:bg-chocolate-light transition-colors;
+  }
+}
 
 a.active hr{
     display: block;
@@ -32,5 +54,4 @@ a.active hr{
     font-family: "Prata", serif;
     font-weight: 400;
     font-style: normal;
-  }    
-  
+  }

@@ -2,6 +2,7 @@
 import React from 'react'
 import { assets } from '../assets/frontend_assets/assets'
 import { Link } from 'react-router-dom'
+import { Mail, PhoneCall } from 'lucide-react'
 
 const Footer = () => {
   return (
@@ -31,15 +32,15 @@ const Footer = () => {
           <p className=' text-xl font-medium mb-5'>GET IN TOUCH</p>
 
           <ul className='flex flex-col gap-1 text-gray-600'>
-            <li>+91 79901 24552</li>
-            <li>contact@gmail</li>
+            <li className='flex'><PhoneCall className='pe-2' />+91 8843651565</li>
+            <li className='flex'><Mail className='pe-2'/>admin@chocospot.com</li>
           </ul>
         </div>
 
       </div>
       <div>
         <hr className='  text-gray-300' />
-        <p className='py-5 text-sm text-center '>Copyright 2024@ forever.com - All Right Reserved.</p>
+        <p className='py-5 text-sm text-center '>Copyright 2025@chocospot.com | All Right Reserved.</p>
       </div>
     </div>
   )
