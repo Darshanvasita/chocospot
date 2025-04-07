@@ -38,20 +38,38 @@ const PlaceOrder = () => {
 
     try {
       let orderItems = []
-      console.log(cartItems)
-      for(const items in cartItems){
-        for(const item in cartItems[items]){
-          // console.log(cartItems[items][item]) // It's return Size
-          if(cartItems[items][item] > 0){
-            const itemInfo = structuredClone(products.find(product => product._id == items))
-            if(itemInfo){
-              itemInfo.size = item
-              itemInfo.quantity = cartItems[items][item]
-              orderItems.push(itemInfo)
-            }
+      console.log(cartItems,"CartItems")
+
+      for (const productId in cartItems) {
+        if (Object.prototype.hasOwnProperty.call(cartItems, productId)) {
+          const quantity = cartItems[productId];
+          const itemInfo = structuredClone(products.find(product => product._id == productId));
+          
+          if (itemInfo) {
+            itemInfo.quantity = quantity;
+            orderItems.push(itemInfo)
           }
         }
       }
+      
+      
+      // for (const items in cartItems) {
+      //   for (const item in cartItems[items]) {
+      //     if (cartItems[items][item] > 0) {
+      //       const itemInfo = structuredClone(products.find(product => product._id == items))
+      //       if (itemInfo) {
+      //         // itemInfo.size = item  // ✅ Removed this line
+      //         itemInfo.quantity = cartItems[items]
+      //         console.log(itemInfo,"iteminfo")
+      //         orderItems.push(itemInfo)
+      //       }
+      //     }
+      //   }
+      // }
+
+    
+      // console.log(products)
+      console.log("Order Items: ", orderItems); // 👈 Add this line
 
       let orderData = {
         address: formData,

@@ -8,7 +8,7 @@ require('dotenv').config();
 
 
 
-const currency = 'inr'
+const currency = 'usd'
 const deliveryCharge = 10
 
 // gateway initialization
@@ -64,7 +64,7 @@ exports.placeOrderStripe = async (req, res) => {
 
         const line_items = items.map((item) => ({
             price_data: {
-                currency: "inr",  // Make sure to use a valid currency
+                currency: "usd",  // Make sure to use a valid currency
                 product_data: {
                     name: item.name
                 },
@@ -75,13 +75,13 @@ exports.placeOrderStripe = async (req, res) => {
 
         line_items.push({
             price_data: {
-                currency: "inr",  // Make sure currency is defined
+                currency: "usd",  // Make sure currency is defined
                 product_data: {
                     name: 'Delivery Charges'
                 },
-                unit_amount: 5000 // Example delivery charge ($50)
+                unit_amount: 1000 // Example delivery charge ($10)
             },
-            quantity: 1
+            quantity: 1   
         });
 
         // ✅ Yeh sahi method hai
@@ -160,4 +160,4 @@ exports.updateStatus = async (req, res) => {
         console.log(error)
         res.json({ success: false, message: error.message })
     }
-}
+}  

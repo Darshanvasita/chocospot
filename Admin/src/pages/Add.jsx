@@ -15,10 +15,12 @@ const Add = ({token}) => {
   const [name, setName] = useState("")
   const [description, setDiscription] = useState('')
   const [price, setPrice] = useState('')
-  const [category, setCategory] = useState("Men")
+  const [country, setCountry] = useState("Austria")
   const [subCategory, setSubcategory] = useState('Topwear')
   const [bestseller, setBestseller] = useState(false)
   const [sizes, setSizes] = useState([])
+
+  
 
   const onSubmitHandler = async (e) => {
     e.preventDefault()
@@ -28,7 +30,7 @@ const Add = ({token}) => {
       formData.append('name', name)
       formData.append('description', description)
       formData.append('price', price)
-      formData.append('category', category)
+      formData.append('country', country)
       formData.append('subCategory', subCategory)
       formData.append('bestseller', bestseller)
       formData.append('sizes', JSON.stringify(sizes))
@@ -120,21 +122,29 @@ const Add = ({token}) => {
       <div className='flex flex-col sm:flex-row gap-2 w-full sm:gap-8'>
         <div>
           <p className='mb-2'>Product Category</p>
-          <select onChange={(e) => setCategory(e.target.value)} className='w-full px-3 py-2'>
-            <option value="Men">Men</option>
-            <option value="Women">Women</option>
-            <option value="Kids">Kids</option>
+          <select onChange={(e) => setCountry(e.target.value)} className='w-full px-3 py-2'>
+            <option value="Austria">Austria</option>
+              <option value="Switzerland">Switzerland</option>
+              <option value="Germany">Germany</option>
+              <option value="Ireland">Ireland</option>
+              <option value="United Kingdom">United Kingdom</option>
+              <option value="Sweden">Sweden</option>
+              <option value="Estonia">Estonia</option>
+              <option value="Norway">Norway</option>
+              <option value="Belgium">Belgium</option>
+              <option value="Finland">Finland</option>
+              
           </select>
         </div>
 
-        <div>
+        {/* <div>
           <p className='mb-2'>Sub Category</p>
           <select onChange={(e) => setSubcategory(e.target.value)} className='w-full px-3 py-2'>
             <option value="Topwear">Topwear</option>
             <option value="Bottomwear">Bottomwear</option>
             <option value="Winterwear">Winterwear</option>
           </select>
-        </div>
+        </div> */}
 
         <div>
           <p className=' mb-2'>Product Price</p>
@@ -143,35 +153,7 @@ const Add = ({token}) => {
 
       </div>
 
-      <div>
-        <p className=' mb-2'>Product Size</p>
-        <div className=' flex gap-3'>
-          <div onClick={() => setSizes(prev => prev.includes("S") ? prev.filter(item => item !== "S") : [...prev, "S"])}>
-            <p className={` ${sizes.includes("S") ? "bg-pink-100" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>S</p>
-          </div>
 
-          <div onClick={() => setSizes(prev => prev.includes("M") ? prev.filter(item => item !== "M") : [...prev, "M"])} >
-            <p className={` ${sizes.includes("M") ? "bg-pink-100" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>M</p>
-          </div>
-
-          <div onClick={() => setSizes(prev => prev.includes("L") ? prev.filter(item => item !== "L") : [...prev, "L"])} >
-            <p className={` ${sizes.includes("L") ? "bg-pink-100" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>L</p>
-          </div>
-
-          <div onClick={() => setSizes(prev => prev.includes("XL") ? prev.filter(item => item !== "XL") : [...prev, "XL"])} >
-            <p className={` ${sizes.includes("XL") ? "bg-pink-100" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>XL</p>
-          </div>
-
-          <div onClick={() => setSizes(prev => prev.includes("XXL") ? prev.filter(item => item !== "XXL") : [...prev, "XXL"])} >
-            <p className={` ${sizes.includes("XXL") ? "bg-pink-100" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>XXL</p>
-          </div>
-        </div>
-      </div>
-
-      <div className='flex gap-2 mt-2'>
-        <input onChange={() => setBestseller(prev => !prev)} checked={bestseller} type="checkbox" id='bestseller' />
-        <label className=' cursor-pointer' htmlFor="bestseller">Add To bestseller</label>
-      </div>
 
       <button type='submit' className='w-28 py-3 mt-4 bg-black text-white'>Add</button>
 

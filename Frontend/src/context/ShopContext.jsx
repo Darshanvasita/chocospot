@@ -19,94 +19,83 @@ const ShopContextProvider = (props) => {
     const [products,setProducts] = useState([])
     const [token,setToken] = useState('')
 
-    const addToCart = async(itemId,size) => {
+    const addToCart = async(itemId) => {
 
-        if(!size){
-            toast.error('Select product Size')
-            return
-        }
+     
 
-        let cartData = structuredClone(cartItems)
-        
+        let cartData = structuredClone(cartItems);
+    
         if(cartData[itemId]){
-            if(cartData[itemId][size]){
-                cartData[itemId][size] += 1 
-            }else{
-                cartData[itemId][size] = 1
-            } 
-        }else{
-            cartData[itemId] = {}
-            cartData[itemId][size] = 1
+            cartData[itemId] += 1;
+        } else {
+            cartData[itemId] = 1;
         }
-        setCartItems(cartData) 
-
+    
+        setCartItems(cartData); 
+    
         if(token){
             try {
-                await axios.post(backendUrl + '/api/cart/add', {itemId,size}, { headers : {token}})
+                await axios.post(backendUrl + '/api/cart/add', { itemId }, { headers: { token }});
             } catch (error) {
-                console.log(error)
-                toast.error(error.message)
+                console.log(error);
+                toast.error(error.message);
             }
+    
         }
         
     }
 
 
     const getCartCount = () => { 
-        let totalCount = 0 
-        for (const items in cartItems) {   // items -  itemid 
-            for(const item in cartItems[items]){    // item - size
-                try {
-                    if(cartItems[items][item] > 0){
-                        totalCount += cartItems[items][item]
-                    }
-                } catch (error) {
-                    console.log(error)
+        let totalCount = 0;
+        for (const itemId in cartItems) {  
+            try {
+                if(cartItems[itemId] > 0){
+                    totalCount += cartItems[itemId];
                 }
+            } catch (error) {
+                console.log(error);
             }
         }
-        return totalCount
-    }
+        return totalCount;
+    };
+    
+    
 
     useEffect(()=>{
         console.log(cartItems)
     },[cartItems])
 
-    const updateQuantity = async(itemId,size,quantity) => {
-
-        let cartData = structuredClone(cartItems)
-
-        cartData[itemId][size] = quantity
-
-        setCartItems(cartData)
-
+    const updateQuantity = async(itemId, quantity) => { // ✅ size remove
+        let cartData = structuredClone(cartItems);
+        cartData[itemId] = quantity;
+        setCartItems(cartData);
+    
         if(token){
             try {
-                await axios.post(backendUrl + '/api/cart/update' , {itemId,size,quantity} ,{ headers : {token}})
+                await axios.post(backendUrl + '/api/cart/update', { itemId, quantity }, { headers: { token }});
             } catch (error) {
-                console.log(error)
-                console.log(error.message)
+                console.log(error);
+                toast.error(error.message);
             }
         }
-
-    }
+    };
+    
 
     const getCartAmount = () => {
-        let totalAmount = 0
-        for(const items in cartItems){
-            let itemInfo = products.find((product)=>product._id === items)
-            for(const item in cartItems[items]){
-                try {
-                    if(cartItems[items][item] > 0){
-                        totalAmount += itemInfo.price * cartItems[items][item]
-                    }
-                } catch (error) {
-                    
+        let totalAmount = 0;
+        for (const itemId in cartItems) {
+            let itemInfo = products.find((product) => product._id === itemId);
+            try {
+                if(cartItems[itemId] > 0){
+                    totalAmount += itemInfo.price * cartItems[itemId];
                 }
+            } catch (error) {
+                console.log(error);
             }
         }
-        return totalAmount
-    }
+        return totalAmount;
+    };
 
     const getProductsData = async () => {
         try {

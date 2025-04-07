@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const slides = [
   {
@@ -68,12 +69,12 @@ const Hero = () => {
                 </p>
                 <div className="mt-5 sm:mt-8 sm:flex sm:justify-center">
                   <div className="rounded-md shadow">
-                    <a
-                      href="#"
+                    <Link
+                      to={'/collection'}
                       className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-yellow-500 to-orange-600 hover:opacity-90 transition-opacity md:py-4 md:text-lg md:px-10"
                     >
                       Shop Now
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
